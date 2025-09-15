@@ -5,371 +5,100 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>UpFlow – Posuň svůj byznys výš</title>
   <meta name="description" content="UpFlow — správa webů, sociálních sítí a online reklama pro firmu i podnikatele." />
-
-  <!-- Styles (vše v jednom souboru pro jednoduché nasazení) -->
   <style>
     :root{
-      --bg:#0b0c0f;
-      --card:#111217;
-      --muted:#9aa4b2;
-      --accent:#00aaff;
-      --glass: rgba(255,255,255,0.03);
-      --radius:14px;
+      --bg:#0b0c0f; 
+      --card:#111217; 
+      --muted:#9aa4b2; 
+      --accent:#00aaff; 
+      --glass: rgba(255,255,255,0.03); 
+      --radius:14px; 
       --shadow: 0 6px 30px rgba(0,0,0,0.6);
     }
     *{box-sizing:border-box}
     html,body{height:100%}
     body{
-      margin:0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      margin:0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial;
       background: linear-gradient(180deg, var(--bg) 0%, #070708 100%);
-      color:#e9eef6;
-      -webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale;
+      color:#e9eef6; -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
       scroll-behavior:smooth;
     }
-
-    /* NAV */
     nav{
-      position:fixed;
-      left:0; right:0; top:0;
-      height:72px;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
+      position:fixed; left:0; right:0; top:0; height:72px;
+      display:flex; align-items:center; justify-content:space-between;
       padding:8px 36px;
       background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
       backdrop-filter: blur(8px);
       border-bottom: 1px solid rgba(255,255,255,0.03);
       z-index:1000;
     }
-    .brand{
-      display:flex; align-items:center; gap:14px;
-    }
+    .brand{ display:flex; align-items:center; gap:14px; }
     .brand img{
       height:44px; width:44px; object-fit:contain; border-radius:10px;
       filter: drop-shadow(0 6px 20px rgba(0,170,255,0.12));
-      background: linear-gradient(180deg,#051018,#092233);
-      padding:4px;
+      background: linear-gradient(180deg,#051018,#092233); padding:4px;
     }
-    .brand .title{
-      font-size:1.05rem; font-weight:700; letter-spacing:0.3px; color:#fff;
-    }
-    .nav-links{
-      display:flex; gap:22px; align-items:center;
-    }
+    .brand .title{ font-size:1.05rem; font-weight:700; letter-spacing:0.3px; color:#fff; }
+    .nav-links{ display:flex; gap:22px; align-items:center; }
     .nav-links a{
-      color:var(--muted); text-decoration:none; font-weight:600; padding:8px 10px;
-      border-radius:8px; transition: color .18s, background .18s, transform .12s;
+      color:var(--muted); text-decoration:none; font-weight:600;
+      padding:8px 10px; border-radius:8px; transition: color .18s, background .18s, transform .12s;
     }
     .nav-links a:hover{ color:var(--accent); transform:translateY(-2px) }
-    .cta {
-      margin-left:12px;
-      background: linear-gradient(90deg,var(--accent),#50d0ff);
-      color:#02121a;
-      padding:10px 14px;
-      border-radius:10px;
-      font-weight:700;
-      text-decoration:none;
-      box-shadow: 0 10px 30px rgba(0,170,255,0.12);
-    }
+    .cta { margin-left:12px; background: linear-gradient(90deg,var(--accent),#50d0ff); color:#02121a; padding:10px 14px; border-radius:10px; font-weight:700; text-decoration:none; box-shadow: 0 10px 30px rgba(0,170,255,0.12); }
 
-    /* HERO */
-    .hero{
-      min-height:100vh;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      text-align:center;
-      padding:120px 20px 80px; /* nav height spacing */
-    }
-    .hero-inner{
-      max-width:980px;
-      width:100%;
-    }
+    .hero{ min-height:100vh; display:flex; align-items:center; justify-content:center; text-align:center; padding:120px 20px 80px; }
+    .hero-inner{ max-width:980px; width:100%; }
     .eyebrow{ color:var(--accent); font-weight:700; letter-spacing:0.6px; margin-bottom:18px }
-    h1{
-      font-size: clamp(28px, 6.2vw, 64px);
-      margin:0 0 18px;
-      line-height:1.02;
-      letter-spacing:-1px;
-      font-weight:800;
-      color: #ffffff;
-      text-shadow: 0 6px 30px rgba(0,0,0,0.6);
-      transform: translateY(0);
-      opacity:1;
-    }
-    p.lead{
-      margin:0 auto 26px;
-      color:var(--muted);
-      font-size: clamp(15px, 1.6vw, 18px);
-      max-width:760px;
-    }
+    h1{ font-size: clamp(28px, 6.2vw, 64px); margin:0 0 18px; line-height:1.02; letter-spacing:-1px; font-weight:800; color: #ffffff; text-shadow: 0 6px 30px rgba(0,0,0,0.6); }
+    p.lead{ margin:0 auto 26px; color:var(--muted); font-size: clamp(15px, 1.6vw, 18px); max-width:760px; }
 
-    /* ACTIONS ROW */
-    .actions{
-      display:flex; gap:14px; justify-content:center; margin-top:26px; flex-wrap:wrap;
-    }
-    .btn{
-      padding:12px 18px; border-radius:12px; font-weight:700; text-decoration:none;
-      background:transparent; border:1px solid rgba(255,255,255,0.04);
-      color:var(--muted);
-      transition: all .18s;
-    }
+    .actions{ display:flex; gap:14px; justify-content:center; margin-top:26px; flex-wrap:wrap; }
+    .btn{ padding:12px 18px; border-radius:12px; font-weight:700; text-decoration:none; background:transparent; border:1px solid rgba(255,255,255,0.04); color:var(--muted); transition: all .18s; }
     .btn:hover{ color:var(--accent); transform: translateY(-4px) }
-    .btn-primary{
-      background: linear-gradient(90deg,var(--accent), #49d1ff);
-      color:#02121a; border:none; box-shadow: 0 12px 40px rgba(0,170,255,0.12);
-    }
+    .btn-primary{ background: linear-gradient(90deg,var(--accent), #49d1ff); color:#02121a; border:none; box-shadow: 0 12px 40px rgba(0,170,255,0.12); }
 
-    /* SECTIONS */
-    .section{
-      padding:72px 20px;
-      max-width:1100px;
-      margin: 0 auto;
-    }
-    .section h2{
-      color: #e6f7ff;
-      margin:0 0 18px;
-      font-size: clamp(20px, 3vw, 30px);
-    }
+    .section{ padding:72px 20px; max-width:1100px; margin: 0 auto; }
+    .section h2{ color: #e6f7ff; margin:0 0 18px; font-size: clamp(20px, 3vw, 30px); }
     .section p.lead-muted{ color:var(--muted); margin:0 0 28px; max-width:900px }
 
-    /* SERVICES GRID */
-    .services{
-      display:grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px,1fr));
-      gap:20px;
-    }
-    .card{
-      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
-      border: 1px solid rgba(255,255,255,0.03);
-      padding:24px;
-      border-radius:var(--radius);
-      box-shadow: var(--shadow);
-      transition: transform .35s cubic-bezier(.2,.9,.2,1), box-shadow .35s;
-      transform: translateY(0);
-    }
+    .services{ display:grid; grid-template-columns: repeat(auto-fit, minmax(260px,1fr)); gap:20px; }
+    .card{ background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); border: 1px solid rgba(255,255,255,0.03); padding:24px; border-radius:var(--radius); box-shadow: var(--shadow); transition: transform .35s cubic-bezier(.2,.9,.2,1), box-shadow .35s; transform: translateY(0); }
     .card:hover{ transform: translateY(-10px); box-shadow: 0 30px 70px rgba(0,170,255,0.08) }
     .card h3{ margin:0 0 8px; color:#fff; font-size:1.15rem}
     .card p{ margin:0; color:var(--muted); line-height:1.55 }
 
-    /* FEATURES / STEPS (small) */
     .features{ display:flex; gap:18px; flex-wrap:wrap; margin-top:20px }
-    .feature{
-      background:var(--glass); padding:12px 14px; border-radius:10px; color:var(--muted);
-      font-weight:600; font-size:0.95rem;
-    }
+    .feature{ background:var(--glass); padding:12px 14px; border-radius:10px; color:var(--muted); font-weight:600; font-size:0.95rem; }
 
-    /* CONTACT */
-    .contact-box{
-      background: linear-gradient(180deg, rgba(255,255,255,0.015), rgba(255,255,255,0.01));
-      border:1px solid rgba(255,255,255,0.03);
-      padding:28px; border-radius:14px; display:flex; gap:20px; align-items:center;
-      justify-content:space-between; flex-wrap:wrap;
-    }
+    .contact-box{ background: linear-gradient(180deg, rgba(255,255,255,0.015), rgba(255,255,255,0.01)); border:1px solid rgba(255,255,255,0.03); padding:28px; border-radius:14px; display:flex; gap:20px; align-items:center; justify-content:space-between; flex-wrap:wrap; }
     .contact-left{ max-width:720px }
     .contact-left h3{ margin:0 0 6px }
     .contact-left p{ margin:0; color:var(--muted) }
 
-    /* FOOTER */
     footer{ padding:36px 20px; text-align:center; color:var(--muted) }
 
-    /* small screens */
     @media (max-width:760px){
       nav{ padding:10px 18px }
-      .nav-links{ display:none } /* simple responsive - hide links on small screens */
+      .nav-links{ display:none }
       .hero{ padding-top:110px }
     }
 
-    /* subtle reveal on scroll (will be applied with JS) */
     .reveal{ opacity:0; transform: translateY(18px); transition: all 0.8s cubic-bezier(.2,.9,.2,1) }
     .reveal.visible{ opacity:1; transform: translateY(0) }
 
-    /* subtle floating animation on hero logo if present */
     .logo-float{ animation: floaty 6s ease-in-out infinite }
-    @keyframes floaty {
-      0% { transform: translateY(0) }
-      50% { transform: translateY(-10px) }
-      100% { transform: translateY(0) }
-    }
+    @keyframes floaty { 0% { transform: translateY(0) } 50% { transform: translateY(-10px) } 100% { transform: translateY(0) } }
   </style>
 </head>
 <body>
-  <!-- NAV -->
-  <nav>
-    <div class="brand">
-      <!-- změň cestu, pokud logo uložíš jinam -->
-      <img src="assets/upflow-logo.png" alt="UpFlow logo" id="site-logo" class="logo-float" />
-      <div class="title">UpFlow</div>
-    </div>
 
-    <div class="nav-links" aria-hidden="false">
-      <a href="#o-mne">O mně</a>
-      <a href="#sluzby">Služby</a>
-      <a href="#cenik">Ceník</a>
-      <a href="#kontakt">Kontakt</a>
-      <a class="cta" href="#kontakt">Poptat službu</a>
-    </div>
-  </nav>
-
-  <!-- HERO -->
-  <header class="hero">
-    <div class="hero-inner">
-      <div class="eyebrow">UpFlow — Digitální růst</div>
-      <h1>Posuň svůj byznys výš.</h1>
-      <p class="lead">Správa webů, sociálních sítí a cílené reklamy, která přivádí zákazníky. Moderní přístup, měřitelné výsledky.</p>
-
-      <div class="actions">
-        <a class="btn btn-primary" href="#sluzby">Prohlédnout služby</a>
-        <a class="btn" href="#kontakt">Domluvit konzultaci</a>
-        <a class="btn" href="#cenik">Ceník</a>
-      </div>
-    </div>
-  </header>
-
-  <!-- O MNE -->
-  <section id="o-mne" class="section reveal">
-    <h2>O mně</h2>
-    <p class="lead-muted">Jsem specialista na digitální marketing a weby. Pomáhám malým a středním firmám a podnikatelům vytvářet jasnou online prezentaci a získávat nové zákazníky pomocí chytré strategie, kvalitního obsahu a cílených kampaní.</p>
-
-    <div class="features">
-      <div class="feature">10+ let zkušeností</div>
-      <div class="feature">Zaměření na konverze</div>
-      <div class="feature">Průhledné reporty</div>
-    </div>
-  </section>
-
-  <!-- SLUZBY -->
-  <section id="sluzby" class="section reveal">
-    <h2>Moje služby</h2>
-    <p class="lead-muted">Nabízím kompletní servis od tvorby webu po dlouhodobou správu a reklamní kampaně.</p>
-
-    <div class="services">
-      <div class="card">
-        <h3>Weby & UX</h3>
-        <p>Rychlé, responzivní a SEO- připravené stránky zaměřené na konverze. Přesné měření výsledků a A/B testování.</p>
-      </div>
-
-      <div class="card">
-        <h3>Sociální sítě</h3>
-        <p>Strategie, obsahová tvorba, plánování a správa kampaní pro Facebook, Instagram, LinkedIn a další.</p>
-      </div>
-
-      <div class="card">
-        <h3>Online reklama</h3>
-        <p>Nastavení a optimalizace kampaní Google Ads, Performance Max, remarketing a analytika.</p>
-      </div>
-
-      <div class="card">
-        <h3>Brand & Content</h3>
-        <p>Tvorba brandových materiálů, copywriting, vizuální obsah a konzistentní tón komunikace.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- CENIK (jednoduchý příklad) -->
-  <section id="cenik" class="section reveal">
-    <h2>Ceník (orientačně)</h2>
-    <div class="services">
-      <div class="card">
-        <h3>Základní web</h3>
-        <p>Jednostránkový prezentační web — od 8 000 Kč</p>
-      </div>
-      <div class="card">
-        <h3>Měsíční správa</h3>
-        <p>Správa sociálních sítí a drobné úpravy webu — od 5 000 Kč / měs.</p>
-      </div>
-      <div class="card">
-        <h3>Reklamní kampaně</h3>
-        <p>Nastavení + správa kampaní — od 4 000 Kč + rozpočet na reklamu</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- KONTAKT -->
-  <section id="kontakt" class="section reveal">
-    <h2>Kontakt</h2>
-    <div class="contact-box">
-      <div class="contact-left">
-        <h3>Chceš růst? Napiš mi.</h3>
-        <p>Pošlu ti návrh řešení na míru. Rychlá odpověď do 24 hodin.</p>
-      </div>
-      <div class="contact-right">
-        <!-- klikací mailto a také jednoduchý kontaktní formulář (bez backendu) -->
-        <p style="margin:0 0 8px; font-weight:700;"><a href="mailto:kontakt@upflow.cz" style="color:var(--accent); text-decoration:none;">kontakt@upflow.cz</a></p>
-        <p style="margin:0; color:var(--muted)">nebo vyplň formulář níže</p>
-      </div>
-
-      <!-- jednoduchý formulář (bez serveru — bude odesílat mail přes mailto nebo vyžaduje backend) -->
-    </div>
-
-    <div style="height:18px"></div>
-
-    <form id="contactForm" onsubmit="handleContact(event)" style="max-width:820px; margin-top:18px; display:grid; gap:10px;">
-      <input name="name" placeholder="Tvoje jméno" required style="padding:12px;border-radius:10px;border:1px solid rgba(255,255,255,0.04); background:transparent; color: #fff;">
-      <input name="email" type="email" placeholder="E-mail" required style="padding:12px;border-radius:10px;border:1px solid rgba(255,255,255,0.04); background:transparent; color: #fff;">
-      <textarea name="message" placeholder="Krátce o projektu" rows="5" style="padding:12px;border-radius:10px;border:1px solid rgba(255,255,255,0.04); background:transparent; color: #fff;"></textarea>
-      <div style="display:flex; gap:12px; flex-wrap:wrap;">
-        <button class="btn btn-primary" type="submit">Odeslat poptávku</button>
-        <button class="btn" type="button" onclick="location.href='mailto:kontakt@upflow.cz'">Poslat e-mail</button>
-      </div>
-      <div id="formMsg" style="color:var(--muted); font-size:0.95rem;"></div>
-    </form>
-  </section>
-
-  <footer>
-    &copy; <span id="year"></span> UpFlow — Posuň svůj byznys výš · <span style="color:var(--muted)">Všechny práva vyhrazeny</span>
-  </footer>
-
-  <!-- Skripty (animace, scroll reveal, jednoduchý formulář handler) -->
-  <script>
-    // nastavení roku
-    document.getElementById('year').textContent = new Date().getFullYear();
-
-    // jednoduchý scroll reveal pro prvky s třídou .reveal
-    const reveals = document.querySelectorAll('.reveal');
-    const io = new IntersectionObserver(entries => {
-      entries.forEach(e=>{
-        if(e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target) }
-      });
-    }, {threshold: 0.12});
-    reveals.forEach(r=>io.observe(r));
-
-    // Smooth mobile nav: kliknutí na odkaz zavře (pokud skryté)
-    document.querySelectorAll('nav a[href^="#"]').forEach(a=>{
-      a.addEventListener('click', ()=> {
-        // nic speciálního teď - ale můžeme zavřít mobilní menu, pokud ho přidáš
-      });
-    });
-
-    // Jednoduchý "frontend-only" formulář handler (bez backendu)
-    function handleContact(e){
-      e.preventDefault();
-      const form = e.target;
-      const name = form.name.value.trim();
-      const email = form.email.value.trim();
-      const msg = form.message.value.trim();
-      // Bez backendu – navrhuju poslat přes mailto nebo použít Formspree/Netlify Forms apod.
-      // Zde jen ukážeme uživateli info a vytvoříme mailto jako fallback.
-      if(!name || !email){
-        document.getElementById('formMsg').textContent = 'Vyplň prosím jméno a e-mail.';
-        return;
-      }
-      const subject = encodeURIComponent('Poptávka od ' + name);
-      const body = encodeURIComponent('Jméno: ' + name + '\\nE-mail: ' + email + '\\n\\n' + msg);
-      // otevře email klienta
-      window.location.href = `mailto:kontakt@upflow.cz?subject=${subject}&body=${body}`;
-      document.getElementById('formMsg').textContent = 'Otevírám tvůj e-mailový klient...';
-    }
-
-    // pokud chceš - po kliknutí na CTA můžeš přidat tracking eventy atd.
-  </script>
-</body>
-</html>
 <!-- NAV -->
-<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABAAAAAQACAIAAADwf7zUAAC552NhQlgAALnnanVtYgAAAB5qdW1kYzJwYQARABCAAACqADibcQNjMnBhAAAANxNqdW1iAAAAR2p1bWRjMm1hABEAEIAAAKoAOJtxA3VybjpjMnBhOjg2ZWFhYjJjLTljZTItNGFlZS05ZDZjLWZmYzY4NmUyYjUzMQAAAAHhanVtYgAAAClqdW1kYzJhcwARABCAAACqADibcQNjMnBhLmFzc2VydGlvbnMAAAABBWp1bWIAAAApanVtZGNib3IAEQAQgAAAqg
-
+<nav>
+  <div class="brand">
+    <img src="logo.png" alt="UpFlow logo" id="site-logo" class="logo-float" />
+    <div class="title">UpFlow</div>
+  </div>
   <div class="nav-links" aria-hidden="false">
     <a href="#o-mne">O mně</a>
     <a href="#sluzby">Služby</a>
@@ -378,4 +107,136 @@
     <a class="cta" href="#kontakt">Poptat službu</a>
   </div>
 </nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-inner">
+    <div class="eyebrow">UpFlow — Digitální růst</div>
+    <h1>Posuň svůj byznys výš.</h1>
+    <p class="lead">Správa webů, sociálních sítí a cílené reklamy, která přivádí zákazníky. Moderní přístup, měřitelné výsledky.</p>
+    <div class="actions">
+      <a class="btn btn-primary" href="#sluzby">Prohlédnout služby</a>
+      <a class="btn" href="#kontakt">Domluvit konzultaci</a>
+      <a class="btn" href="#cenik">Ceník</a>
+    </div>
+  </div>
+</header>
+
+<!-- O MNE -->
+<section id="o-mne" class="section reveal">
+  <h2>O mně</h2>
+  <p class="lead-muted">Jsem specialista na digitální marketing a weby. Pomáhám malým a středním firmám a podnikatelům vytvářet jasnou online prezentaci a získávat nové zákazníky pomocí chytré strategie, kvalitního obsahu a cílených kampaní.</p>
+  <div class="features">
+    <div class="feature">10+ let zkušeností</div>
+    <div class="feature">Zaměření na konverze</div>
+    <div class="feature">Průhledné reporty</div>
+  </div>
+</section>
+
+<!-- SLUZBY -->
+<section id="sluzby" class="section reveal">
+  <h2>Moje služby</h2>
+  <p class="lead-muted">Nabízím kompletní servis od tvorby webu po dlouhodobou správu a reklamní kampaně.</p>
+  <div class="services">
+    <div class="card">
+      <h3>Weby & UX</h3>
+      <p>Rychlé, responzivní a SEO- připravené stránky zaměřené na konverze. Přesné měření výsledků a A/B testování.</p>
+    </div>
+    <div class="card">
+      <h3>Sociální sítě</h3>
+      <p>Strategie, obsahová tvorba, plánování a správa kampaní pro Facebook, Instagram, LinkedIn a další.</p>
+    </div>
+    <div class="card">
+      <h3>Online reklama</h3>
+      <p>Nastavení a optimalizace kampaní Google Ads, Performance Max, remarketing a analytika.</p>
+    </div>
+    <div class="card">
+      <h3>Brand & Content</h3>
+      <p>Tvorba brandových materiálů, copywriting, vizuální obsah a konzistentní tón komunikace.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CENIK -->
+<section id="cenik" class="section reveal">
+  <h2>Ceník (orientačně)</h2>
+  <div class="services">
+    <div class="card">
+      <h3>Základní web</h3>
+      <p>Jednostránkový prezentační web — od 8 000 Kč</p>
+    </div>
+    <div class="card">
+      <h3>Měsíční správa</h3>
+      <p>Správa sociálních sítí a drobné úpravy webu — od 5 000 Kč / měs.</p>
+    </div>
+    <div class="card">
+      <h3>Reklamní kampaně</h3>
+      <p>Nastavení + správa kampaní — od 4 000 Kč + rozpočet na reklamu</p>
+    </div>
+  </div>
+</section>
+
+<!-- KONTAKT -->
+<section id="kontakt" class="section reveal">
+  <h2>Kontakt</h2>
+  <div class="contact-box">
+    <div class="contact-left">
+      <h3>Chceš růst? Napiš mi.</h3>
+      <p>Pošlu ti návrh řešení na míru. Rychlá odpověď do 24 hodin.</p>
+    </div>
+    <div class="contact-right">
+      <p style="margin:0 0 8px; font-weight:700;">
+        <a href="mailto:upfllow@gmail.com" style="color:var(--accent); text-decoration:none;">upfllow@gmail.com</a>
+      </p>
+      <p style="margin:0; color:var(--muted)">nebo vyplň formulář níže</p>
+    </div>
+  </div>
+
+  <div style="height:18px"></div>
+  <form id="contactForm" onsubmit="handleContact(event)" style="max-width:820px; margin-top:18px; display:grid; gap:10px;">
+    <input name="name" placeholder="Tvoje jméno" required style="padding:12px;border-radius:10px;border:1px solid rgba(255,255,255,0.04); background:transparent; color: #fff;">
+    <input name="email" type="email" placeholder="E-mail" required style="padding:12px;border-radius:10px;border:1px solid rgba(255,255,255,0.04); background:transparent; color: #fff;">
+    <textarea name="message" placeholder="Krátce o projektu" rows="5" style="padding:12px;border-radius:10px;border:1px solid rgba(255,255,255,0.04); background:transparent; color: #fff;"></textarea>
+    <div style="display:flex; gap:12px; flex-wrap:wrap;">
+      <button class="btn btn-primary" type="submit">Odeslat poptávku</button>
+      <button class="btn" type="button" onclick="location.href='mailto:upfllow@gmail.com'">Poslat e-mail</button>
+    </div>
+    <div id="formMsg" style="color:var(--muted); font-size:0.95rem;"></div>
+  </form>
+</section>
+
+<footer>
+  &copy; <span id="year"></span> UpFlow — Posuň svůj byznys výš · <span style="color:var(--muted)">Všechny práva vyhrazeny</span>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  const reveals = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e=>{
+      if(e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target) }
+    });
+  }, {threshold: 0.12});
+  reveals.forEach(r=>io.observe(r));
+
+  function handleContact(e){
+    e.preventDefault();
+    const form = e.target;
+    const name = form.name.value.trim();
+    const email = form.email.value.trim();
+    const msg = form.message.value.trim();
+    if(!name || !email){
+      document.getElementById('formMsg').textContent = 'Vyplň prosím jméno a e-mail.';
+      return;
+    }
+    const subject = encodeURIComponent('Poptávka od ' + name);
+    const body = encodeURIComponent('Jméno: ' + name + '\nE-mail: ' + email + '\n\n' + msg);
+    window.location.href = `mailto:upfllow@gmail.com?subject=${subject}&body=${body}`;
+    document.getElementById('formMsg').textContent = 'Otevírám tvůj e-mailový klient...';
+  }
+</script>
+</body>
+</html>
+
 
